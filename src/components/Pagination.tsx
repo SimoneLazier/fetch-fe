@@ -10,6 +10,10 @@ interface PaginationProps {
   onChange: (page: number) => void
 }
 
+function classNames(...classes: unknown[]) {
+  return classes.filter(Boolean).join(' ')
+}
+
 export default function Pagination({
   page,
   total,
@@ -17,6 +21,27 @@ export default function Pagination({
   onChange,
 }: PaginationProps) {
   const pages = Math.ceil(total / perPage)
+
+  const PaginationItem = ({ value }: { value?: number }) => {
+    return (
+      <button
+        disabled={!value}
+        aria-current="page"
+        className={classNames(
+          'inline-flex items-center border-t-2 px-4 pt-4 text-sm font-medium',
+          value === page
+            ? 'border-indigo-500 text-indigo-600'
+            : 'border-transparent text-gray-500',
+          value &&
+            value !== page &&
+            'hover:border-gray-300 hover:text-gray-700',
+        )}
+        onClick={() => value && onChange(value)}
+      >
+        {value ?? '...'}
+      </button>
+    )
+  }
 
   return (
     <nav className="flex items-center justify-between border-t border-gray-200 px-4 sm:px-0">
@@ -32,6 +57,47 @@ export default function Pagination({
           />
           Previous
         </button>
+      </div>
+      <div className="hidden md:-mt-px md:flex">
+        <PaginationItem value={1} />
+        {pages >= 2 && (
+          <PaginationItem value={page > 4 && pages > 7 ? undefined : 2} />
+        )}
+        {pages >= 3 && (
+          <PaginationItem
+            value={
+              page > 4 && pages >= 7
+                ? page < pages - 3
+                  ? page - 1
+                  : pages - 4
+                : 3
+            }
+          />
+        )}
+        {pages >= 4 && (
+          <PaginationItem
+            value={
+              page > 4 && pages >= 7 ? (page < pages - 3 ? page : pages - 3) : 4
+            }
+          />
+        )}
+        {pages >= 5 && (
+          <PaginationItem
+            value={
+              page > 4 && pages >= 7
+                ? page < pages - 3
+                  ? page + 1
+                  : pages - 2
+                : 5
+            }
+          />
+        )}
+        {pages >= 7 && (
+          <PaginationItem
+            value={page < pages - 3 && pages > 7 ? undefined : pages - 1}
+          />
+        )}
+        {pages >= 6 && <PaginationItem value={pages} />}
       </div>
       <div className="-mt-px flex w-0 flex-1 justify-end">
         <button

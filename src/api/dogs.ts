@@ -3,6 +3,7 @@ import { FiltersState } from '../components/Filters'
 
 interface SearchResponse {
   resultIds: string[]
+  total: number
 }
 
 interface MatchResponse {
@@ -32,7 +33,11 @@ class DogsApi {
         sort: `${filters.sortBy}:${filters.desc ? 'desc' : 'asc'}`,
       },
     })
-    return (await this.get(data.resultIds)) as Dog[]
+
+    return {
+      dogs: (await this.get(data.resultIds)) as Dog[],
+      total: data.total,
+    }
   }
 
   async match(ids: string[]) {
