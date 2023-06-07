@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
 import Login from './pages/Login'
 import Error404 from './pages/errors/404'
 import Dogs from './pages/Dogs'
@@ -18,8 +18,12 @@ function Router() {
 
   axios.interceptors.response.use(undefined, (error) => {
     if (error instanceof AxiosError && error.response?.status === 401) logout()
-    return Promise.reject(error)
+    // Return handled promise rejection
+    return Promise.reject().catch(() => void 0)
   })
+
+  const navigate = useNavigate()
+  window.onunhandledrejection = () => navigate('/error')
 
   return (
     <Routes>
@@ -47,6 +51,7 @@ function Router() {
           />
         </Route>
       </Route>
+      <Route path="error" element={<Error500 />} />
       <Route path="*" element={<Error404 />} />
     </Routes>
   )

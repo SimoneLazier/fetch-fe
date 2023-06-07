@@ -17,6 +17,7 @@ function Dogs() {
     breeds: [],
     minAge: undefined,
     maxAge: undefined,
+    zipCodes: [],
     sortBy: 'breed',
     desc: false,
   })
