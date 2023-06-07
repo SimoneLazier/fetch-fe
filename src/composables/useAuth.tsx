@@ -1,20 +1,21 @@
 import { useNavigate } from 'react-router'
 import { useAppDispatch, useAppSelector } from '../store'
-import { setIsLogged } from '../store/auth'
+import { setUser } from '../store/auth'
 
 const useAuth = () => {
   const navigate = useNavigate()
-  const isLogged = useAppSelector((state) => state.auth.isLogged)
+  const user = useAppSelector((state) => state.auth.user)
+  const isLogged = user !== undefined
   const dispatch = useAppDispatch()
-  const login = () => {
-    dispatch(setIsLogged(true))
+  const login = (name: string, email: string) => {
+    dispatch(setUser({ name, email }))
     navigate('/dogs')
   }
   const logout = () => {
-    dispatch(setIsLogged(false))
+    dispatch(setUser(undefined))
     navigate('/')
   }
-  return { isLogged, login, logout }
+  return { user, isLogged, login, logout }
 }
 
 export default useAuth
