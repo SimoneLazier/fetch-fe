@@ -37,7 +37,7 @@ function Filters({ value, onFilter }: FiltersProps) {
             type="text"
             name="breed"
             value={value.breed}
-            className="block w-full rounded-md border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-800 sm:text-sm sm:leading-6"
+            className="block w-full rounded-md border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-800 sm:text-sm sm:leading-6"
             placeholder="Labrador, Beagle, ..."
             onChange={(e) =>
               onFilter({
@@ -51,7 +51,7 @@ function Filters({ value, onFilter }: FiltersProps) {
       <div className="flex gap-2 items-end">
         <select
           value={value.sortBy}
-          className="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-800 sm:text-sm sm:leading-6"
+          className="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-800 sm:text-sm sm:leading-6"
           onChange={(e) =>
             onFilter({
               ...value,
@@ -65,13 +65,13 @@ function Filters({ value, onFilter }: FiltersProps) {
           <option value="breed">Breed</option>
         </select>
         <button
-          className="p-2 rounded-md hover:bg-gray-100 focus:ring-2 ring-purple-800"
+          className="p-2 rounded-md hover:bg-gray-100 focus:ring-2 ring-indigo-800"
           onClick={() => onFilter({ ...value, desc: !value.desc })}
         >
           {value.desc ? (
-            <BarsArrowDownIcon className="w-5 h-5" />
-          ) : (
             <BarsArrowUpIcon className="w-5 h-5" />
+          ) : (
+            <BarsArrowDownIcon className="w-5 h-5" />
           )}
         </button>
       </div>
