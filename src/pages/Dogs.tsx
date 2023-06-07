@@ -13,16 +13,19 @@ function Dogs() {
     sortBy: 'breed',
     desc: false,
   })
-  const dogsPromise = useDogs()
+  const { search, match } = useDogs()
   useEffect(() => {
-    dogsPromise.then((res) =>
+    search(16, 0, filters).then((res) =>
       setDogs(res.map((dog) => ({ ...dog, active: false }))),
     )
   }, [])
 
   const navigate = useNavigate()
-  const getResults = () => {
-    navigate(`/dogs/${dogs![0].id}`)
+  const getResults = async () => {
+    const id = await match(
+      dogs!.filter((dog) => dog.active).map((dog) => dog.id),
+    )
+    navigate(`/dogs/${id}`)
   }
 
   const [page, setPage] = useState<number>(1)

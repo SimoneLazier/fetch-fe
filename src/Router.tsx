@@ -29,7 +29,7 @@ function Router() {
           }
         />
         <Route
-          path="/dogs/:match"
+          path="/dogs/:id"
           element={
             <PrivateRoute>
               <Dog />
