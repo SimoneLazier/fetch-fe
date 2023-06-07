@@ -2,7 +2,7 @@ import { ArrowLongRightIcon } from '@heroicons/react/24/solid'
 import img404 from '../../assets/error-dog.png'
 import { useNavigate } from 'react-router'
 
-function Error404() {
+function Error500() {
   const navigate = useNavigate()
   const redirect = () => {
     navigate('/dogs')
@@ -11,9 +11,7 @@ function Error404() {
   return (
     <div className="flex flex-col items-center justify-center text-center min-h-full">
       <img src={img404} className="mb-8" />
-      <h1 className="text-2xl font-semibold">
-        We can't find the page you're looking for
-      </h1>
+      <h1 className="text-2xl font-semibold">An unexpected error occurred</h1>
       <button
         className="flex items-center mt-4 font-medium text-indigo-800 hover:text-indigo-600"
         onClick={redirect}
@@ -25,4 +23,4 @@ function Error404() {
   )
 }
 
-export default Error404
+export default Error500

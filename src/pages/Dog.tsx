@@ -3,6 +3,7 @@ import dogsApi from '../api/dogs'
 import { useParams } from 'react-router'
 import { useEffect, useState } from 'react'
 import Loader from '../components/Loader'
+import confetti from 'canvas-confetti'
 
 function Dog() {
   const id = useParams().id as string
@@ -10,6 +11,13 @@ function Dog() {
   useEffect(() => {
     dogsApi.get(id).then((dog) => setDog(dog as Dog))
   }, [id])
+  useEffect(() => {
+    const confettiAnimation = confetti.create(undefined, {
+      resize: true,
+      useWorker: true,
+    })
+    confettiAnimation({ particleCount: 100, spread: 160 })
+  }, [])
 
   return (
     <div className="bg-white">

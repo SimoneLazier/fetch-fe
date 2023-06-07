@@ -5,6 +5,7 @@ import Dogs from './pages/Dogs'
 import Dog from './pages/Dog'
 import useAuth from './composables/useAuth'
 import AppLayout from './layouts/AppLayout'
+import Error500 from './pages/errors/500'
 
 function PrivateRoute({ children }: { children: JSX.Element }) {
   const { isLogged } = useAuth()
@@ -15,27 +16,29 @@ function Router() {
   const { isLogged } = useAuth()
   return (
     <Routes>
-      <Route
-        path="/"
-        element={isLogged ? <Navigate to="/dogs" /> : <Login />}
-      />
-      <Route element={<AppLayout />}>
+      <Route errorElement={<Error500 />}>
         <Route
-          path="/dogs"
-          element={
-            <PrivateRoute>
-              <Dogs />
-            </PrivateRoute>
-          }
+          path="/"
+          element={isLogged ? <Navigate to="/dogs" /> : <Login />}
         />
-        <Route
-          path="/dogs/:id"
-          element={
-            <PrivateRoute>
-              <Dog />
-            </PrivateRoute>
-          }
-        />
+        <Route element={<AppLayout />}>
+          <Route
+            path="/dogs"
+            element={
+              <PrivateRoute>
+                <Dogs />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/dogs/:id"
+            element={
+              <PrivateRoute>
+                <Dog />
+              </PrivateRoute>
+            }
+          />
+        </Route>
       </Route>
       <Route path="*" element={<Error404 />} />
     </Routes>
