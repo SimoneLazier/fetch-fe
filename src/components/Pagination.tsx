@@ -2,16 +2,13 @@ import {
   ArrowLongLeftIcon,
   ArrowLongRightIcon,
 } from '@heroicons/react/20/solid'
+import { classNames } from '../utils/class-names'
 
 interface PaginationProps {
   page: number
   total: number
   perPage: number
   onChange: (page: number) => void
-}
-
-function classNames(...classes: unknown[]) {
-  return classes.filter(Boolean).join(' ')
 }
 
 export default function Pagination({
@@ -27,7 +24,7 @@ export default function Pagination({
       <button
         disabled={!value}
         aria-current="page"
-        className={classNames(
+        className={classNames([
           'inline-flex items-center border-t-2 px-4 pt-4 text-sm font-medium',
           value === page
             ? 'border-indigo-500 text-indigo-600'
@@ -35,7 +32,7 @@ export default function Pagination({
           value &&
             value !== page &&
             'hover:border-gray-300 hover:text-gray-700',
-        )}
+        ])}
         onClick={() => value && onChange(value)}
       >
         {value ?? '...'}

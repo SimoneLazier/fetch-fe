@@ -5,10 +5,7 @@ import { Outlet } from 'react-router'
 import useAuth from '../composables/useAuth'
 import logo from '../assets/logo.svg'
 import profilePicture from '../assets/profile-picture.jpg'
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
-}
+import { classNames } from '../utils/class-names'
 
 function AppLayout() {
   const auth = useAuth()
@@ -63,10 +60,10 @@ function AppLayout() {
                         <Menu.Item>
                           {({ active }) => (
                             <button
-                              className={classNames(
-                                active ? 'bg-gray-100' : '',
+                              className={classNames([
+                                active && 'bg-gray-100',
                                 'block w-full text-left px-4 py-2 text-sm text-gray-700',
-                              )}
+                              ])}
                               onClick={logout}
                             >
                               Sign out

@@ -9,15 +9,15 @@ function Dog() {
   const id = useParams().id as string
   const [dog, setDog] = useState<Dog>()
   useEffect(() => {
-    dogsApi.get(id).then((dog) => setDog(dog as Dog))
-  }, [id])
-  useEffect(() => {
-    const confettiAnimation = confetti.create(undefined, {
-      resize: true,
-      useWorker: true,
+    dogsApi.get(id).then((dog) => {
+      setDog(dog as Dog)
+      const confettiAnimation = confetti.create(undefined, {
+        resize: true,
+        useWorker: true,
+      })
+      confettiAnimation({ particleCount: 100, spread: 160 })
     })
-    confettiAnimation({ particleCount: 100, spread: 160 })
-  }, [])
+  }, [id])
 
   return (
     <div className="bg-white">

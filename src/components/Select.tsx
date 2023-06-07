@@ -1,17 +1,13 @@
 import { useState } from 'react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 import { Combobox } from '@headlessui/react'
+import { classNames } from '../utils/class-names'
 
 interface SelectProps extends Record<string, unknown> {
   options: string[]
   value: string | string[]
   multiple?: boolean
   onChange: (values: string | string[]) => void
-}
-
-// TODO: Reuse
-function classNames(...classes: (string | boolean)[]) {
-  return classes.filter(Boolean).join(' ')
 }
 
 function Select({ options, multiple, value, onChange, ...props }: SelectProps) {
@@ -56,29 +52,29 @@ function Select({ options, multiple, value, onChange, ...props }: SelectProps) {
               key={option}
               value={option}
               className={({ active }) =>
-                classNames(
+                classNames([
                   'relative cursor-default select-none py-2 pl-8 pr-4',
                   active ? 'bg-indigo-800 text-white' : 'text-gray-900',
-                )
+                ])
               }
             >
               {({ active, selected }) => (
                 <>
                   <span
-                    className={classNames(
+                    className={classNames([
                       'block truncate',
                       selected && 'font-semibold',
-                    )}
+                    ])}
                   >
                     {option}
                   </span>
 
                   {selected && (
                     <span
-                      className={classNames(
+                      className={classNames([
                         'absolute inset-y-0 left-0 flex items-center pl-1.5',
                         active ? 'text-white' : 'text-indigo-800',
-                      )}
+                      ])}
                     >
                       <CheckIcon className="h-5 w-5" aria-hidden="true" />
                     </span>
