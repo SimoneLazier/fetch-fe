@@ -15,6 +15,8 @@ function Dogs() {
   const [selected, setSelected] = useState<string[]>([])
   const [filters, setFilters] = useState<FiltersState>({
     breeds: [],
+    minAge: undefined,
+    maxAge: undefined,
     sortBy: 'breed',
     desc: false,
   })

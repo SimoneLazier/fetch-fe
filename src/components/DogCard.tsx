@@ -30,8 +30,8 @@ function DogCard({
           className="h-full w-full object-cover object-center lg:h-full lg:w-full"
         />
         {active && (
-          <div className="absolute flex flex-col items-center justify-center inset-0 rounded-md bg-gradient-to-tr from-purple-400/50 to-indigo-800/50 text-white">
-            <div className="flex">
+          <div className="absolute flex flex-col items-center justify-center inset-0 rounded-md bg-gradient-to-tr from-purple-500/50 via-indigo-500/50 to-indigo-900/50 text-white">
+            <div className="flex font-semibold text-lg">
               <CheckIcon className="w-6 h-6 mr-1" /> Selected
             </div>
             <button
@@ -49,7 +49,7 @@ function DogCard({
           <h3 className="text-sm text-gray-700">{dog.name}</h3>
           <div className="mt-1 text-sm text-gray-500">
             <div className="flex items-center mb-1">
-              <CakeIcon className="w-4 h-4 mr-1" /> {dog.age} years old
+              <CakeIcon className="w-4 h-4 mr-1" /> {dog.age || '<1'} years old
             </div>
             <div className="flex items-center">
               <MapPinIcon className="w-4 h-4 mr-1" /> {dog.zip_code}

@@ -28,6 +28,8 @@ class DogsApi {
     const { data } = await axios.get<SearchResponse>('/dogs/search', {
       params: {
         breeds: filters.breeds,
+        ageMin: filters.minAge,
+        ageMax: filters.maxAge,
         size: take,
         from: skip,
         sort: `${filters.sortBy}:${filters.desc ? 'desc' : 'asc'}`,
