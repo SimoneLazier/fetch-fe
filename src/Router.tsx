@@ -1,27 +1,25 @@
-import {
-  BrowserRouter,
-  Navigate,
-  Route,
-  RouteProps,
-  Routes,
-} from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import Login from './pages/Login'
 import Error404 from './pages/errors/404'
-import useAuth from './composables/useAuth'
 import Dogs from './pages/Dogs'
 import Dog from './pages/Dog'
+import useAuth from './composables/useAuth'
+import AppLayout from './layouts/AppLayout'
 
 function PrivateRoute({ children }: { children: JSX.Element }) {
   const { isLogged } = useAuth()
-
   return isLogged ? children : <Navigate to="/" />
 }
 
-function App() {
+function Router() {
+  const { isLogged } = useAuth()
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Login />} />
+    <Routes>
+      <Route
+        path="/"
+        element={isLogged ? <Navigate to="/dogs" /> : <Login />}
+      />
+      <Route element={<AppLayout />}>
         <Route
           path="/dogs"
           element={
@@ -38,10 +36,10 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route path="*" element={<Error404 />} />
-      </Routes>
-    </BrowserRouter>
+      </Route>
+      <Route path="*" element={<Error404 />} />
+    </Routes>
   )
 }
 
-export default App
+export default Router
