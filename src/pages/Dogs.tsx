@@ -11,25 +11,34 @@ const PER_PAGE = 8
 function Dogs() {
   const [total, setTotal] = useState<number>(0)
   const [page, setPage] = useState<number>(1)
-  const [dogs, setDogs] = useState<(Dog & { active: boolean })[]>()
+  const [dogs, setDogs] = useState<Dog[]>()
+  const [selected, setSelected] = useState<string[]>([])
   const [filters, setFilters] = useState<FiltersState>({
     breeds: [],
     sortBy: 'breed',
     desc: false,
   })
+  const toggleSelected = (id: string) => {
+    const i = selected.indexOf(id)
+    setSelected(
+      i >= 0
+        ? [...selected.slice(0, i), ...selected.slice(i + 1)]
+        : [...selected, id],
+    )
+  }
 
   useEffect(() => {
-    dogsApi.search(PER_PAGE, (page - 1) * PER_PAGE, filters).then((res) => {
-      setDogs(res.dogs.map((dog) => ({ ...dog, active: false })))
-      setTotal(res.total)
-    })
+    dogsApi
+      .search(PER_PAGE, (page - 1) * PER_PAGE, filters)
+      .then(({ dogs, total }) => {
+        setDogs(dogs)
+        setTotal(total)
+      })
   }, [page, filters])
 
   const navigate = useNavigate()
   const getResults = async () => {
-    const id = await dogsApi.match(
-      dogs!.filter((dog) => dog.active).map((dog) => dog.id),
-    )
+    const id = await dogsApi.match(selected)
     navigate(`/dogs/${id}`)
   }
 
@@ -45,18 +54,12 @@ function Dogs() {
         <>
           <Filters value={filters} onFilter={setFilters} />
           <div className="my-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-            {dogs.map(({ active, ...dog }) => (
+            {dogs.map((dog) => (
               <DogCard
                 key={dog.id}
                 dog={dog}
-                active={active}
-                onToggleSelect={() =>
-                  setDogs(
-                    dogs.map((d) =>
-                      d.id === dog.id ? { ...d, active: !d.active } : d,
-                    ),
-                  )
-                }
+                active={selected.includes(dog.id)}
+                onToggleSelect={() => toggleSelected(dog.id)}
                 onGetResults={getResults}
               />
             ))}
