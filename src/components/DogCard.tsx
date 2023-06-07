@@ -1,4 +1,5 @@
 import { CheckIcon } from '@heroicons/react/24/outline'
+import { CakeIcon, MapPinIcon } from '@heroicons/react/20/solid'
 import { MouseEvent } from 'react'
 
 function DogCard({
@@ -46,11 +47,14 @@ function DogCard({
       <div className="mt-4 flex justify-between">
         <div>
           <h3 className="text-sm text-gray-700">{dog.name}</h3>
-          <p className="mt-1 text-sm text-gray-500">
-            Age: {dog.age}
-            <br />
-            Zip code: {dog.zip_code}
-          </p>
+          <div className="mt-1 text-sm text-gray-500">
+            <div className="flex items-center mb-1">
+              <CakeIcon className="w-4 h-4 mr-1" /> {dog.age} years old
+            </div>
+            <div className="flex items-center">
+              <MapPinIcon className="w-4 h-4 mr-1" /> {dog.zip_code}
+            </div>
+          </div>
         </div>
         <p className="text-sm font-medium text-gray-900">{dog.breed}</p>
       </div>
