@@ -5,6 +5,10 @@ import Router from './Router'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from './store'
+import axios from 'axios'
+
+axios.defaults.baseURL = import.meta.env.VITE_API_ENDPOINT
+axios.defaults.withCredentials = true
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
