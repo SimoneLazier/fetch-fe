@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import useDogs from '../composables/useDogs'
+import dogsApi from '../api/dogs'
 import Loader from '../components/Loader'
 import Filters, { FiltersState } from '../components/Filters'
 import DogCard from '../components/DogCard'
@@ -9,20 +9,20 @@ import Pagination from '../components/Pagination'
 function Dogs() {
   const [dogs, setDogs] = useState<(Dog & { active: boolean })[]>()
   const [filters, setFilters] = useState<FiltersState>({
-    breed: '',
+    breeds: [],
     sortBy: 'breed',
     desc: false,
   })
-  const { search, match } = useDogs()
+
   useEffect(() => {
-    search(16, 0, filters).then((res) =>
-      setDogs(res.map((dog) => ({ ...dog, active: false }))),
-    )
-  }, [])
+    dogsApi
+      .search(16, 0, filters)
+      .then((res) => setDogs(res.map((dog) => ({ ...dog, active: false }))))
+  }, [filters])
 
   const navigate = useNavigate()
   const getResults = async () => {
-    const id = await match(
+    const id = await dogsApi.match(
       dogs!.filter((dog) => dog.active).map((dog) => dog.id),
     )
     navigate(`/dogs/${id}`)
