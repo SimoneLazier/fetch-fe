@@ -1,6 +1,7 @@
 import { CheckIcon } from '@heroicons/react/24/outline'
 import { CakeIcon, MapPinIcon } from '@heroicons/react/20/solid'
 import { MouseEvent } from 'react'
+import { classNames } from '../utils/class-names'
 
 function DogCard({
   dog,
@@ -29,8 +30,19 @@ function DogCard({
           alt={dog.name}
           className="h-full w-full object-cover object-center lg:h-full lg:w-full"
         />
-        {active && (
-          <div className="absolute flex flex-col items-center justify-center inset-0 rounded-md bg-gradient-to-tr from-purple-500/50 via-indigo-500/50 to-indigo-900/50 text-white">
+        <div className="absolute inset-0 flex flex-col items-center justify-center rounded-md text-white">
+          <div
+            className={classNames([
+              'absolute bg-gradient-to-tr from-purple-500/50 via-indigo-500/50 to-indigo-900/50 transition-all duration-200',
+              active ? 'inset-0' : 'inset-full',
+            ])}
+          />
+          <div
+            className={classNames([
+              'relative transition-all duration-200',
+              active ? 'opacity-100' : 'opacity-0',
+            ])}
+          >
             <div className="flex font-semibold text-lg">
               <CheckIcon className="w-6 h-6 mr-1" /> Selected
             </div>
@@ -42,7 +54,7 @@ function DogCard({
               See Results
             </button>
           </div>
-        )}
+        </div>
       </div>
       <div className="mt-4 flex justify-between">
         <div>
