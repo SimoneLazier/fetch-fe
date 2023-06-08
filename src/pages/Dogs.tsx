@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import dogsApi from '../api/dogs'
+import dogsApi, { DogFilters } from '../api/dogs'
 import Loader from '../components/Loader'
-import Filters, { FiltersState } from '../components/Filters'
+import Filters from '../components/Filters'
 import DogCard from '../components/DogCard'
 import { useNavigate } from 'react-router'
 import Pagination from '../components/Pagination'
@@ -13,7 +13,7 @@ function Dogs() {
   const [page, setPage] = useState<number>(1)
   const [dogs, setDogs] = useState<Dog[]>()
   const [selected, setSelected] = useState<string[]>([])
-  const [filters, setFilters] = useState<FiltersState>({
+  const [filters, setFilters] = useState<DogFilters>({
     breeds: [],
     minAge: undefined,
     maxAge: undefined,
@@ -56,6 +56,8 @@ function Dogs() {
       {dogs && (
         <>
           <Filters value={filters} onFilter={setFilters} />
+
+          {dogs.length === 0 && <h3 className="my-6 text-lg">No results!</h3>}
           <div className="my-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {dogs.map((dog) => (
               <DogCard

@@ -14,8 +14,8 @@ const useAuth = () => {
     dispatch(setUser({ name, email, auth_expires }))
     navigate('/dogs')
   }
-  const logout = async () => {
-    await axios.post('/auth/logout')
+  const logout = async (clientOnly = false) => {
+    if (!clientOnly) await axios.post('/auth/logout')
     dispatch(setUser(undefined))
     navigate('/')
   }

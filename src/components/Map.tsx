@@ -13,41 +13,77 @@ const rectStyle = {
   fillOpacity: 0.35,
 }
 
-interface MapProps {
-  center: { lat: number; lng: number }
+interface Rectangle {
+  top: number
+  left: number
+  bottom: number
+  right: number
 }
 
-// TODO: Fix for mobile, add reset button
-function Map({ center }: MapProps) {
-  const [rectangle, setRectangle] = useState<number[]>([])
-  const [lastClick, setLastClick] = useState<number[]>([])
+interface MapProps {
+  center: { lat: number; lng: number }
+  value?: Rectangle
+  onSelect: (rectangle?: Rectangle) => void
+}
+
+function Map({ center, value, onSelect }: MapProps) {
+  const [rectangle, setRectangle] = useState<number[]>(
+    value ? [value.top, value.left, value.bottom, value.right] : [],
+  )
+  const [firstClick, setFirstClick] = useState<number[] | undefined>(
+    value ? [value.top, value.left] : undefined,
+  )
+  const [lastClick, setLastClick] = useState<number[] | undefined>(
+    value ? [value.bottom, value.right] : undefined,
+  )
   const [hover, setHover] = useState<number[]>([])
+  const [click, setClick] = useState<number[]>([])
 
   useEffect(() => {
-    const [lat, lng] = lastClick
-    if (!lat || !lng || (rectangle.includes(lat) && rectangle.includes(lng)))
+    if (
+      (firstClick?.at(0) === click[0] && firstClick?.at(1) === click[1]) ||
+      (lastClick?.at(0) === click[0] && lastClick?.at(1) === click[1])
+    )
       return
-
-    if (rectangle.length === 4 || rectangle.length === 0)
-      setRectangle([lat, lng])
-    else setRectangle([...rectangle, lat, lng])
-  }, [lastClick, rectangle])
+    if (!firstClick) setFirstClick(click)
+    else if (!lastClick) setLastClick(click)
+    else {
+      setFirstClick(click)
+      setLastClick(undefined)
+    }
+  }, [click, firstClick, lastClick])
 
   useEffect(() => {
-    if (!maps || rectangle.length !== 2) return
+    if (!firstClick) setRectangle([])
+    else setRectangle([...firstClick, ...(lastClick ?? hover)])
+
+    if (firstClick && lastClick)
+      onSelect({
+        top: Math.max(firstClick[0], lastClick[0]),
+        left: Math.min(firstClick[1], lastClick[1]),
+        bottom: Math.min(firstClick[0], lastClick[0]),
+        right: Math.max(firstClick[1], lastClick[1]),
+      })
+    else onSelect(undefined)
+    // TODO: fix dependency
+  }, [firstClick, lastClick, hover])
+
+  useEffect(() => {
     area?.setMap(null)
-    area = new maps.Rectangle({
-      ...rectStyle,
-      map,
-      bounds: {
-        north: Math.max(hover[0], rectangle[0]),
-        south: Math.min(hover[0], rectangle[0]),
-        east: Math.max(hover[1], rectangle[1]),
-        west: Math.min(hover[1], rectangle[1]),
-      },
-    })
-    area.setOptions({ clickable: false })
-  }, [hover, rectangle])
+    if (maps && rectangle.length === 4) {
+      area = new maps.Rectangle({
+        ...rectStyle,
+        map,
+        bounds: {
+          north: Math.max(rectangle[2], rectangle[0]),
+          south: Math.min(rectangle[2], rectangle[0]),
+          east: Math.max(rectangle[3], rectangle[1]),
+          west: Math.min(rectangle[3], rectangle[1]),
+        },
+      })
+      area.setOptions({ clickable: false })
+    }
+  }, [rectangle])
 
   const apiLoaded = (
     newMap: google.maps.Map,
@@ -59,19 +95,34 @@ function Map({ center }: MapProps) {
     map.addListener('mousemove', hoverHandler)
   }
   const clickHandler = (e: { latLng: google.maps.LatLng }) =>
-    setLastClick([e.latLng.lat(), e.latLng.lng()])
+    setClick([e.latLng.lat(), e.latLng.lng()])
   const hoverHandler = (e: { latLng: google.maps.LatLng }) =>
     setHover([e.latLng.lat(), e.latLng.lng()])
 
   return (
-    <GoogleMapReact
-      bootstrapURLKeys={{ key: import.meta.env.VITE_MAPS_KEY }}
-      options={{ clickableIcons: false }}
-      defaultCenter={center}
-      defaultZoom={13}
-      yesIWantToUseGoogleMapApiInternals
-      onGoogleApiLoaded={({ map, maps }) => apiLoaded(map, maps)}
-    />
+    <>
+      <GoogleMapReact
+        bootstrapURLKeys={{ key: import.meta.env.VITE_MAPS_KEY }}
+        options={{ clickableIcons: false }}
+        defaultCenter={center}
+        defaultZoom={13}
+        yesIWantToUseGoogleMapApiInternals
+        onGoogleApiLoaded={({ map, maps }) => apiLoaded(map, maps)}
+      />
+      {lastClick && (
+        <button
+          className="absolute top-12 left-6 z-50 inline-flex justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:col-start-2"
+          onClick={() => {
+            setRectangle([])
+            setClick([])
+            setFirstClick(undefined)
+            setLastClick(undefined)
+          }}
+        >
+          Reset
+        </button>
+      )}
+    </>
   )
 }
 

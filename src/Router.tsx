@@ -17,7 +17,8 @@ function Router() {
   const { isLogged, logout } = useAuth()
 
   axios.interceptors.response.use(undefined, (error) => {
-    if (error instanceof AxiosError && error.response?.status === 401) logout()
+    if (error instanceof AxiosError && error.response?.status === 401)
+      logout(true)
     // Return handled promise rejection
     return Promise.reject().catch(() => void 0)
   })

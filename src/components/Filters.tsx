@@ -4,22 +4,13 @@ import {
   MagnifyingGlassIcon,
 } from '@heroicons/react/24/solid'
 import Select from './Select'
-import dogsApi from '../api/dogs'
+import dogsApi, { DogFilters } from '../api/dogs'
 import { useEffect, useState } from 'react'
 import LocationSelector from './LocationSelector'
 
-export interface FiltersState {
-  breeds: string[]
-  minAge?: number
-  maxAge?: number
-  zipCodes: string[]
-  sortBy: 'name' | 'age' | 'breed'
-  desc: boolean
-}
-
 interface FiltersProps {
-  value: FiltersState
-  onFilter: (filters: FiltersState) => void
+  value: DogFilters
+  onFilter: (filters: DogFilters) => void
 }
 
 function Filters({ value, onFilter }: FiltersProps) {
@@ -70,7 +61,9 @@ function Filters({ value, onFilter }: FiltersProps) {
             >
               Location:
             </label>
-            <LocationSelector />
+            <LocationSelector
+              onChange={(e) => onFilter({ ...value, zipCodes: e })}
+            />
           </div>
         </div>
 
@@ -87,6 +80,7 @@ function Filters({ value, onFilter }: FiltersProps) {
                 id="minAge"
                 type="number"
                 name="minAge"
+                min={0}
                 value={value.minAge ?? ''}
                 placeholder="4"
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-800 sm:text-sm sm:leading-6"
@@ -111,6 +105,7 @@ function Filters({ value, onFilter }: FiltersProps) {
                 id="maxAge"
                 type="number"
                 name="maxAge"
+                min={0}
                 value={value.maxAge ?? ''}
                 placeholder="12"
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-800 sm:text-sm sm:leading-6"
@@ -142,7 +137,7 @@ function Filters({ value, onFilter }: FiltersProps) {
             onChange={(e) =>
               onFilter({
                 ...value,
-                sortBy: e.target.value as FiltersState['sortBy'],
+                sortBy: e.target.value as DogFilters['sortBy'],
               })
             }
           >

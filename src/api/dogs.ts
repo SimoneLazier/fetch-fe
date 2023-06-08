@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { FiltersState } from '../components/Filters'
 
 interface SearchResponse {
   resultIds: string[]
@@ -8,6 +7,15 @@ interface SearchResponse {
 
 interface MatchResponse {
   match: string
+}
+
+export interface DogFilters {
+  breeds: string[]
+  minAge?: number
+  maxAge?: number
+  zipCodes: string[] | null
+  sortBy: 'name' | 'age' | 'breed'
+  desc: boolean
 }
 
 class DogsApi {
@@ -24,7 +32,13 @@ class DogsApi {
     return Array.isArray(ids) ? data : data[0]
   }
 
-  async search(take: number, skip: number, filters: FiltersState) {
+  async search(take: number, skip: number, filters: DogFilters) {
+    if (filters.zipCodes === null)
+      return {
+        dogs: [],
+        total: 0,
+      }
+
     const { data } = await axios.get<SearchResponse>('/dogs/search', {
       params: {
         breeds: filters.breeds,
