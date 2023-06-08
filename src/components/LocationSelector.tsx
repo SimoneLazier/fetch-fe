@@ -91,13 +91,13 @@ function LocationSelector({ onChange }: LocationSelectorProps) {
       >
         <Dialog.Title
           as="h3"
-          className="text-lg font-semibold leading-6 text-gray-900 mb-4 text-center"
+          className="text-lg font-semibold leading-6 text-gray-900 mb-4"
         >
           Select location
         </Dialog.Title>
         {error && (
-          <p className="text-red-700">
-            Too many results, please narrow your research!
+          <p className="text-red-700 -mt-2">
+            The selected area is too large, please narrow your research!
           </p>
         )}
         <div className="flex flex-wrap w-full gap-2">

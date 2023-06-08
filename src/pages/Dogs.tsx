@@ -5,10 +5,12 @@ import Filters from '../components/Filters'
 import DogCard from '../components/DogCard'
 import { useNavigate } from 'react-router'
 import Pagination from '../components/Pagination'
+import useTitle from '../composables/useTitle'
 
 const PER_PAGE = 8
 
 function Dogs() {
+  useTitle('Dogs List')
   const [total, setTotal] = useState<number>(0)
   const [page, setPage] = useState<number>(1)
   const [dogs, setDogs] = useState<Dog[]>()

@@ -1,7 +1,9 @@
 import { ArrowLongRightIcon } from '@heroicons/react/24/solid'
 import img404 from '../../assets/error-dog.png'
+import useTitle from '../../composables/useTitle'
 
 function Error404() {
+  useTitle('Error')
   return (
     <div className="flex flex-col items-center justify-center text-center min-h-full">
       <img src={img404} className="mb-8" />

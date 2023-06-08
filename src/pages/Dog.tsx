@@ -9,10 +9,12 @@ import { useEffect, useState } from 'react'
 import Loader from '../components/Loader'
 import confetti from 'canvas-confetti'
 import { Link } from 'react-router-dom'
+import useTitle from '../composables/useTitle'
 
 function Dog() {
   const id = useParams().id as string
   const [dog, setDog] = useState<Dog>()
+  useTitle(dog?.name)
   useEffect(() => {
     dogsApi.get(id).then((dog) => {
       setDog(dog as Dog)
