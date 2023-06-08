@@ -2,6 +2,9 @@ import { FormEvent, useState } from 'react'
 import useAuth from '../composables/useAuth'
 import logo from '../assets/logo.svg'
 
+/**
+ * The login (and home) page
+ */
 function Login() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')

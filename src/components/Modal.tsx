@@ -10,6 +10,11 @@ interface ModalProps {
   onConfirm: () => void
 }
 
+/**
+ * A general purpose modal
+ *
+ * @param props The children, the open/close state, the text of the buttons and the event listeners
+ */
 function Modal({
   children,
   open,

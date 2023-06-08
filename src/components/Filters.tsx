@@ -13,6 +13,12 @@ interface FiltersProps {
   onFilter: (filters: DogFilters) => void
 }
 
+/**
+ * The filters panel
+ *
+ * @param props The current filters and the event listener
+ * @returns
+ */
 function Filters({ value, onFilter }: FiltersProps) {
   const [breeds, setBreeds] = useState<string[]>([])
   useEffect(() => {

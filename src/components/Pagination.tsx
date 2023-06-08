@@ -11,6 +11,11 @@ interface PaginationProps {
   onChange: (page: number) => void
 }
 
+/**
+ * A general purpose pagination component
+ *
+ * @param props The current page, the total number of elements, the elements per page and the event listener
+ */
 export default function Pagination({
   page,
   total,

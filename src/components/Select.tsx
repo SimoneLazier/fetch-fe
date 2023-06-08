@@ -10,6 +10,11 @@ interface SelectProps extends Record<string, unknown> {
   onChange: (values: string | string[]) => void
 }
 
+/**
+ * A select element with searchable elements
+ *
+ * @param props The possible options, the current value, whether to allows multiple selections, the event listener. The other props are forwarded to the search box
+ */
 function Select({ options, multiple, value, onChange, ...props }: SelectProps) {
   const [selected, setSelected] = useState(value)
   const [query, setQuery] = useState('')

@@ -7,6 +7,9 @@ import logo from '../assets/logo.svg'
 import profilePicture from '../assets/profile-picture.jpg'
 import { classNames } from '../utils/class-names'
 
+/**
+ * The basic app layout
+ */
 function AppLayout() {
   const auth = useAuth()
   const logout = (e: MouseEvent) => {

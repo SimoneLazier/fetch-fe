@@ -3,6 +3,11 @@ import { CakeIcon, MapPinIcon } from '@heroicons/react/20/solid'
 import { MouseEvent } from 'react'
 import { classNames } from '../utils/class-names'
 
+/**
+ * A single dog card
+ *
+ * @param props The dog object, the active state, and the event listeners
+ */
 function DogCard({
   dog,
   active,

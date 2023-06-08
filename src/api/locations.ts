@@ -11,7 +11,16 @@ export interface LocationFilters {
   }
 }
 
+/**
+ * The class that handles the API communication for locations' data
+ */
 class LocationsApi {
+  /**
+   * Get the locations that match the filters
+   *
+   * @param filters The filters to be matched
+   * @returns The list of locations
+   */
   async search(filters: LocationFilters) {
     if (
       filters.city === '' &&

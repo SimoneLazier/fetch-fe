@@ -1,5 +1,8 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
+/**
+ * The authentication slice of the redux store
+ */
 const auth = createSlice({
   name: 'auth',
   initialState: () => {

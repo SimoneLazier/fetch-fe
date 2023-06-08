@@ -36,6 +36,12 @@ interface MapProps {
   onSelect: (rectangle?: Rectangle) => void
 }
 
+/**
+ * A simple map that lets users draw a rectangle
+ *
+ * @param props The center, the current selected area, and the event listener
+ * @returns
+ */
 function Map({ center, value, onSelect }: MapProps) {
   const [rectangle, setRectangle] = useState<number[]>(
     value ? [value.top, value.left, value.bottom, value.right] : [],

@@ -9,6 +9,9 @@ import useTitle from '../composables/useTitle'
 
 const PER_PAGE = 8
 
+/**
+ * The Dogs List page
+ */
 function Dogs() {
   useTitle('Dogs List')
   const [total, setTotal] = useState<number>(0)

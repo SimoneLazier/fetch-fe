@@ -18,12 +18,26 @@ export interface DogFilters {
   desc: boolean
 }
 
+/**
+ * The class that handles the API communication for dogs' data
+ */
 class DogsApi {
+  /**
+   * Get the list of breeds
+   *
+   * @returns The list of breeds
+   */
   async getBreeds() {
     const { data } = await axios.get('/dogs/breeds')
     return data
   }
 
+  /**
+   * Get dogs from id/ids
+   *
+   * @param ids An id or a list of ids
+   * @returns The list of dogs
+   */
   async get(ids: string | string[]) {
     const { data } = await axios.post<Dog[]>(
       '/dogs',
@@ -32,6 +46,14 @@ class DogsApi {
     return Array.isArray(ids) ? data : data[0]
   }
 
+  /**
+   * Search for dogs that match the given filters
+   *
+   * @param take For pagination
+   * @param skip For pagination
+   * @param filters Filters to match
+   * @returns The ids of the dogs
+   */
   async search(take: number, skip: number, filters: DogFilters) {
     if (filters.zipCodes === null)
       return {
@@ -57,6 +79,12 @@ class DogsApi {
     }
   }
 
+  /**
+   * Get the dog that matches the user preferences
+   *
+   * @param ids Id of the liked dogs
+   * @returns The id of the matched dog
+   */
   async match(ids: string[]) {
     const { data } = await axios.post<MatchResponse>('/dogs/match', ids)
     return data.match

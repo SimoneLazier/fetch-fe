@@ -11,6 +11,9 @@ import confetti from 'canvas-confetti'
 import { Link } from 'react-router-dom'
 import useTitle from '../composables/useTitle'
 
+/**
+ * The Dog page
+ */
 function Dog() {
   const id = useParams().id as string
   const [dog, setDog] = useState<Dog>()

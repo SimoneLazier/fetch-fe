@@ -1,3 +1,6 @@
+/**
+ * A map of state abbreviations and state name
+ */
 const states = {
   AL: 'Alabama',
   KY: 'Kentucky',

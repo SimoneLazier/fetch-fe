@@ -35,6 +35,11 @@ interface LocationSelectorProps {
   onChange: (zipCodes: string[] | null) => void
 }
 
+/**
+ * The location filter selector with its popup
+ *
+ * @param props The event listener
+ */
 function LocationSelector({ onChange }: LocationSelectorProps) {
   const [modalOpen, setModalOpen] = useState(false)
   const [location, setLocation] = useState<GeolocationPosition>()
@@ -44,10 +49,21 @@ function LocationSelector({ onChange }: LocationSelectorProps) {
     city: '',
     boundingBox: undefined,
   })
-  const center = {
-    lat: location?.coords.latitude ?? 0,
-    lng: location?.coords.longitude ?? 0,
-  }
+  const center = locationFilters.boundingBox
+    ? {
+        lat:
+          (locationFilters.boundingBox.top +
+            locationFilters.boundingBox.bottom) /
+          2,
+        lng:
+          (locationFilters.boundingBox.right +
+            locationFilters.boundingBox.left) /
+          2,
+      }
+    : {
+        lat: location?.coords.latitude ?? 0,
+        lng: location?.coords.longitude ?? 0,
+      }
 
   useEffect(() => {
     getLocation().then(setLocation)
@@ -155,20 +171,7 @@ function LocationSelector({ onChange }: LocationSelectorProps) {
             <div className="grow rounded-md overflow-hidden">
               {location ? (
                 <Map
-                  center={
-                    locationFilters.boundingBox
-                      ? {
-                          lat:
-                            (locationFilters.boundingBox.top +
-                              locationFilters.boundingBox.bottom) /
-                            2,
-                          lng:
-                            (locationFilters.boundingBox.right +
-                              locationFilters.boundingBox.left) /
-                            2,
-                        }
-                      : center
-                  }
+                  center={center}
                   value={locationFilters.boundingBox}
                   onSelect={(bb) =>
                     setLocationFilters({ ...locationFilters, boundingBox: bb })

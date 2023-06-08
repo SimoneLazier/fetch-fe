@@ -2,6 +2,9 @@ import { ArrowLongRightIcon } from '@heroicons/react/24/solid'
 import img404 from '../../assets/error-dog.png'
 import useTitle from '../../composables/useTitle'
 
+/**
+ * The 500 page
+ */
 function Error500() {
   useTitle('Error')
   return (

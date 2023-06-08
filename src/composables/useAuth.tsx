@@ -3,6 +3,11 @@ import { useAppDispatch, useAppSelector } from '../store'
 import { setUser } from '../store/auth'
 import axios from 'axios'
 
+/**
+ * Custom hook to handle authentication
+ *
+ * @returns The user, whether they're logged, and functions to perform login and logout
+ */
 const useAuth = () => {
   const navigate = useNavigate()
   const user = useAppSelector((state) => state.auth.user)
