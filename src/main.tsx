@@ -13,13 +13,11 @@ axios.defaults.baseURL = import.meta.env.VITE_API_ENDPOINT
 axios.defaults.withCredentials = true
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <ErrorBoundary fallback={<Error500 />}>
-        <Provider store={store}>
-          <Router />
-        </Provider>
-      </ErrorBoundary>
-    </BrowserRouter>
-  </React.StrictMode>,
+  <BrowserRouter>
+    <ErrorBoundary fallback={<Error500 />}>
+      <Provider store={store}>
+        <Router />
+      </Provider>
+    </ErrorBoundary>
+  </BrowserRouter>,
 )

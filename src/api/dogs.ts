@@ -30,6 +30,7 @@ class DogsApi {
         breeds: filters.breeds,
         ageMin: filters.minAge,
         ageMax: filters.maxAge,
+        zipCodes: filters.zipCodes,
         size: take,
         from: skip,
         sort: `${filters.sortBy}:${filters.desc ? 'desc' : 'asc'}`,

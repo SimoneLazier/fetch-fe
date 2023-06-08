@@ -6,11 +6,13 @@ import {
 import Select from './Select'
 import dogsApi from '../api/dogs'
 import { useEffect, useState } from 'react'
+import LocationSelector from './LocationSelector'
 
 export interface FiltersState {
   breeds: string[]
   minAge?: number
   maxAge?: number
+  zipCodes: string[]
   sortBy: 'name' | 'age' | 'breed'
   desc: boolean
 }
@@ -50,7 +52,7 @@ function Filters({ value, onFilter }: FiltersProps) {
               value={value.breeds}
               placeholder="Labrador, Beagle, ..."
               multiple
-              className="block w-full rounded-md border-0 py-1.5 pl-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-800 sm:text-sm sm:leading-6"
+              className="block w-full rounded-md border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-800 sm:text-sm sm:leading-6"
               onChange={(breeds) =>
                 onFilter({
                   ...value,
@@ -58,6 +60,17 @@ function Filters({ value, onFilter }: FiltersProps) {
                 })
               }
             />
+          </div>
+        </div>
+        <div className="flex flex-wrap gap-4">
+          <div className="w-full sm:w-auto">
+            <label
+              htmlFor="location"
+              className="block text-sm font-medium leading-6 text-gray-900 mr-2 mb-2"
+            >
+              Location:
+            </label>
+            <LocationSelector />
           </div>
         </div>
 
