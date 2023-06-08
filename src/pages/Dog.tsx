@@ -1,9 +1,14 @@
-import { CakeIcon, MapPinIcon } from '@heroicons/react/24/solid'
+import {
+  ArrowLongLeftIcon,
+  CakeIcon,
+  MapPinIcon,
+} from '@heroicons/react/24/solid'
 import dogsApi from '../api/dogs'
 import { useParams } from 'react-router'
 import { useEffect, useState } from 'react'
 import Loader from '../components/Loader'
 import confetti from 'canvas-confetti'
+import { Link } from 'react-router-dom'
 
 function Dog() {
   const id = useParams().id as string
@@ -53,6 +58,19 @@ function Dog() {
                   className="h-full w-full object-cover object-center"
                 />
               </div>
+            </div>
+
+            <div className="flex justify-center w-full">
+              <Link
+                to="/dogs"
+                className="flex items-center mt-4 font-medium text-indigo-800 hover:text-indigo-600 text-center"
+              >
+                <ArrowLongLeftIcon
+                  className="ml-3 h-5 w-5 -mb-1"
+                  aria-hidden="true"
+                />
+                Try with another search
+              </Link>
             </div>
           </>
         )}

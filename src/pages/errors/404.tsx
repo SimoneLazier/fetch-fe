@@ -10,7 +10,7 @@ function Error404() {
       </h1>
       <a
         href="/dogs"
-        className="flex items-center mt-4 font-medium text-indigo-800 hover:text-indigo-600"
+        className="flex items-center text-center mt-4 font-medium text-indigo-800 hover:text-indigo-600"
       >
         Go back to the dog list
         <ArrowLongRightIcon className="ml-3 h-5 w-5 -mb-1" aria-hidden="true" />

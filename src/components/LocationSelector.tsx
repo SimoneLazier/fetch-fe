@@ -155,7 +155,21 @@ function LocationSelector({ onChange }: LocationSelectorProps) {
             <div className="grow rounded-md overflow-hidden">
               {location ? (
                 <Map
-                  center={center}
+                  center={
+                    locationFilters.boundingBox
+                      ? {
+                          lat:
+                            (locationFilters.boundingBox.top +
+                              locationFilters.boundingBox.bottom) /
+                            2,
+                          lng:
+                            (locationFilters.boundingBox.right +
+                              locationFilters.boundingBox.left) /
+                            2,
+                        }
+                      : center
+                  }
+                  value={locationFilters.boundingBox}
                   onSelect={(bb) =>
                     setLocationFilters({ ...locationFilters, boundingBox: bb })
                   }
