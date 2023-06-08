@@ -46,6 +46,7 @@ function Dogs() {
 
   const navigate = useNavigate()
   const getResults = async () => {
+    if (selected.length === 0) return
     const id = await dogsApi.match(selected)
     navigate(`/dogs/${id}`)
   }

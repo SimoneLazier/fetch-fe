@@ -45,7 +45,7 @@ function DogCard({
           <div
             className={classNames([
               'relative transition-all duration-200',
-              active ? 'opacity-100' : 'opacity-0',
+              active ? 'opacity-100' : 'opacity-0 pointer-events-none',
             ])}
           >
             <div className="flex font-semibold text-lg">
