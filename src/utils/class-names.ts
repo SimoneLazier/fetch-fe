@@ -16,5 +16,7 @@ export function classNames(classes: unknown): string {
       .map((el) => classNames(el[0]))
       .join(' ')
 
-  throw new Error('Only arrays and objects can be converted to a class string.')
+  throw new Error(
+    'Only arrays, objects, and strings can be converted to a class string.',
+  )
 }
