@@ -1,6 +1,6 @@
 import { vi } from 'vitest'
 import { fn } from '@vitest/spy'
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import Modal from './Modal'
 
 // Mock ResizeObserver
@@ -51,10 +51,10 @@ describe('Modal', () => {
     const cancel = await screen.findByText('Cancel')
     const confirm = await screen.findByText('Confirm')
 
-    cancel.click()
+    fireEvent.click(cancel)
     expect(onClose).toHaveBeenCalled()
 
-    confirm.click()
+    fireEvent.click(confirm)
     expect(onConfirm).toHaveBeenCalled()
   })
 })

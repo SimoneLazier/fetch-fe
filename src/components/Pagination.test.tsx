@@ -1,5 +1,5 @@
 import { fn } from '@vitest/spy'
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import Pagination from './Pagination'
 
 describe('Pagination', () => {
@@ -66,11 +66,11 @@ describe('Pagination', () => {
     // The ... button should not emit an event, prev and next should
     const buttons = screen.getAllByRole('button')
     const inactiveButton = buttons[2]
-    inactiveButton.click()
+    fireEvent.click(inactiveButton)
     const prevButton = buttons[0]
-    prevButton.click()
+    fireEvent.click(prevButton)
     const nextButton = buttons[buttons.length - 1]
-    nextButton.click()
+    fireEvent.click(nextButton)
 
     expect(onChange).toHaveBeenCalledTimes(2)
   })

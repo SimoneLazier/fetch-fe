@@ -1,4 +1,4 @@
-import { act, fireEvent, render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import { fn } from '@vitest/spy'
 import Select from './Select'
 
@@ -21,7 +21,7 @@ describe('Select', () => {
     fireEvent.change(input, { target: { value: 'a' } })
     // Select it
     const option = await screen.findByText('a')
-    act(() => option.click())
+    fireEvent.click(option)
 
     expect(onChange).toBeCalledWith('a')
   })
@@ -43,12 +43,12 @@ describe('Select', () => {
     fireEvent.change(input, { target: { value: 'a' } })
     // Select it
     let option = await screen.findByText('a')
-    act(() => option.click())
+    fireEvent.click(option)
     // Remove search - all options should appear
     fireEvent.change(input, { target: { value: '' } })
     // Select the second one
     option = await screen.findByText('b')
-    act(() => option.click())
+    fireEvent.click(option)
 
     expect(onChange).toBeCalledWith(['a', 'b'])
   })

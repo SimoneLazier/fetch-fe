@@ -1,4 +1,4 @@
-import { act, fireEvent, render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import Filters from './Filters'
 import { DogFilters } from '../api/dogs'
 import { vi } from 'vitest'
@@ -34,7 +34,7 @@ describe('Filters', () => {
     const input = await screen.findByPlaceholderText('Labrador, Beagle, ...')
     fireEvent.change(input, { target: { value: 'Golden' } })
     const option = await screen.findByText('Golden Retreiver')
-    act(() => option.click())
+    fireEvent.click(option)
 
     expect(onFilter).toHaveBeenCalledWith({
       breeds: ['Golden Retreiver'],
@@ -50,7 +50,7 @@ describe('Filters', () => {
 
     // Filter by location
     const location = await screen.findByText('Mocked LocationSelector')
-    location.click()
+    fireEvent.click(location)
 
     expect(onFilter).toHaveBeenCalledWith({
       breeds: [],
@@ -116,7 +116,7 @@ describe('Filters', () => {
 
     // Change direction
     const buttons = await screen.findAllByRole('button')
-    buttons[buttons.length - 1].click()
+    fireEvent.click(buttons[buttons.length - 1])
 
     expect(onFilter).toHaveBeenCalledWith({
       breeds: [],

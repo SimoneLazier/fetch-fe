@@ -1,4 +1,4 @@
-import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { fn } from '@vitest/spy'
 import { vi } from 'vitest'
 import LocationSelector from './LocationSelector'
@@ -46,11 +46,11 @@ describe('Location Selector', () => {
 
     // Open modal
     const button = await screen.findByRole('button')
-    act(() => button.click())
+    fireEvent.click(button)
 
     // Confirm
     const confirm = await screen.findByText('Confirm')
-    act(() => confirm.click())
+    fireEvent.click(confirm)
 
     await waitFor(() => expect(onChange).toHaveBeenCalledWith(null))
   })
@@ -61,7 +61,7 @@ describe('Location Selector', () => {
 
     // Open modal
     const button = await screen.findByRole('button')
-    act(() => button.click())
+    fireEvent.click(button)
 
     // Input city
     const cityInput = await screen.findByPlaceholderText('Chicago')
@@ -69,7 +69,7 @@ describe('Location Selector', () => {
 
     // Confirm
     const confirm = await screen.findByText('Confirm')
-    act(() => confirm.click())
+    fireEvent.click(confirm)
 
     await waitFor(() => expect(onChange).toHaveBeenCalledWith(['123']))
   })
@@ -80,7 +80,7 @@ describe('Location Selector', () => {
 
     // Open modal
     const button = await screen.findByRole('button')
-    act(() => button.click())
+    fireEvent.click(button)
 
     // Input state
     const selectInput = await screen.findByPlaceholderText(
@@ -90,11 +90,11 @@ describe('Location Selector', () => {
 
     // Select option
     const illinoisButton = await screen.findByText('Illinois')
-    act(() => illinoisButton.click())
+    fireEvent.click(illinoisButton)
 
     // Confirm
     const confirm = await screen.findByText('Confirm')
-    act(() => confirm.click())
+    fireEvent.click(confirm)
 
     await waitFor(() => expect(onChange).toHaveBeenCalledWith(['456']))
   })
@@ -105,15 +105,15 @@ describe('Location Selector', () => {
 
     // Open modal
     const button = await screen.findByRole('button')
-    act(() => button.click())
+    fireEvent.click(button)
 
     // Click buttons that mocks the google map
     const mockedMap = await screen.findByText('Mocked Map')
-    act(() => mockedMap.click())
+    fireEvent.click(mockedMap)
 
     // Confirm
     const confirm = await screen.findByText('Confirm')
-    act(() => confirm.click())
+    fireEvent.click(confirm)
 
     await waitFor(() => expect(onChange).toHaveBeenCalledWith(['789']))
   })
@@ -124,7 +124,7 @@ describe('Location Selector', () => {
 
     // Open modal
     const button = await screen.findByRole('button')
-    act(() => button.click())
+    fireEvent.click(button)
 
     // Input city with too many zip codes
     const cityInput = await screen.findByPlaceholderText('Chicago')
@@ -132,7 +132,7 @@ describe('Location Selector', () => {
 
     // Confirm
     const confirm = await screen.findByText('Confirm')
-    act(() => confirm.click())
+    fireEvent.click(confirm)
 
     await waitFor(async () =>
       expect(

@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import DogCard from './DogCard'
 import { fn } from '@vitest/spy'
 
@@ -35,7 +35,7 @@ describe('Dog Card', () => {
     )
 
     const link = await screen.findByRole('link')
-    link.click()
+    fireEvent.click(link)
 
     expect(toggleFn).toHaveBeenCalled()
   })
@@ -52,7 +52,7 @@ describe('Dog Card', () => {
     )
 
     const button = await screen.findByRole('button')
-    button.click()
+    fireEvent.click(button)
 
     expect(toggleFn).toHaveBeenCalled()
   })
