@@ -1,4 +1,4 @@
-interface Location {
+interface DogLocation {
   zip_code: string
   latitude: number
   longitude: number
