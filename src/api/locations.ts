@@ -19,7 +19,7 @@ class LocationsApi {
    * Get the locations that match the filters
    *
    * @param filters The filters to be matched
-   * @returns The list of locations
+   * @returns The list of locations, null if there is no match, an empty array if there are no filters
    */
   async search(filters: LocationFilters) {
     if (
