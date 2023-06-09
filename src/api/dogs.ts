@@ -28,7 +28,7 @@ class DogsApi {
    * @returns The list of breeds
    */
   async getBreeds() {
-    const { data } = await axios.get('/dogs/breeds')
+    const { data } = await axios.get<string[]>('/dogs/breeds')
     return data
   }
 
