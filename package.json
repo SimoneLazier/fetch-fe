@@ -7,8 +7,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "test": "vitest",
-    "coverage": "vitest run --coverage",
+    "test": "vitest --root src",
+    "coverage": "vitest run --coverage --root src",
     "doc": "typedoc --plugin typedoc-plugin-markdown ./src/**/*.{tsx,ts}",
     "preview": "vite preview"
   },
