@@ -13,12 +13,14 @@ const useAuth = () => {
   const user = useAppSelector((state) => state.auth.user)
   const isLogged = user !== undefined
   const dispatch = useAppDispatch()
+
   const login = async (name: string, email: string) => {
     await axios.post('/auth/login', { name, email })
     const auth_expires = Date.now() + 60 * 60 * 1000
     dispatch(setUser({ name, email, auth_expires }))
     navigate('/dogs')
   }
+
   const logout = async (clientOnly = false) => {
     if (!clientOnly) await axios.post('/auth/logout')
     dispatch(setUser(undefined))
