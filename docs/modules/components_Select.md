@@ -28,4 +28,4 @@ A select element with searchable elements
 
 #### Defined in
 
-[src/components/Select.tsx:18](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/components/Select.tsx#L18)
+[src/components/Select.tsx:18](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/components/Select.tsx#L18)

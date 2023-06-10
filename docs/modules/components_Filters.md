@@ -28,4 +28,4 @@ The filters panel
 
 #### Defined in
 
-[src/components/Filters.tsx:22](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/components/Filters.tsx#L22)
+[src/components/Filters.tsx:22](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/components/Filters.tsx#L22)

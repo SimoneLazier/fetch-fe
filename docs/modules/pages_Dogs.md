@@ -22,4 +22,4 @@ The Dogs List page
 
 #### Defined in
 
-[src/pages/Dogs.tsx:15](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/pages/Dogs.tsx#L15)
+[src/pages/Dogs.tsx:15](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/pages/Dogs.tsx#L15)

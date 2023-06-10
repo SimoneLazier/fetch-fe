@@ -20,4 +20,4 @@
 
 #### Defined in
 
-[src/api/dogs.ts:94](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/api/dogs.ts#L94)
+[src/api/dogs.ts:94](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/api/dogs.ts#L94)

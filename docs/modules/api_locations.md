@@ -20,4 +20,4 @@
 
 #### Defined in
 
-[src/api/locations.ts:57](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/api/locations.ts#L57)
+[src/api/locations.ts:57](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/api/locations.ts#L57)

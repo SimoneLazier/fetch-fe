@@ -22,4 +22,4 @@ A simple loader
 
 #### Defined in
 
-[src/components/Loader.tsx:6](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/components/Loader.tsx#L6)
+[src/components/Loader.tsx:6](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/components/Loader.tsx#L6)

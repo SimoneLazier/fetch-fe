@@ -22,4 +22,4 @@ The basic app layout
 
 #### Defined in
 
-[src/layouts/AppLayout.tsx:13](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/layouts/AppLayout.tsx#L13)
+[src/layouts/AppLayout.tsx:13](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/layouts/AppLayout.tsx#L13)

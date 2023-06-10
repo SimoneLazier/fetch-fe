@@ -28,4 +28,4 @@ A general purpose modal
 
 #### Defined in
 
-[src/components/Modal.tsx:18](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/components/Modal.tsx#L18)
+[src/components/Modal.tsx:18](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/components/Modal.tsx#L18)

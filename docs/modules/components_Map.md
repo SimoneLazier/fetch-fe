@@ -28,4 +28,4 @@ A simple map that lets users draw a rectangle
 
 #### Defined in
 
-[src/components/Map.tsx:45](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/components/Map.tsx#L45)
+[src/components/Map.tsx:45](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/components/Map.tsx#L45)

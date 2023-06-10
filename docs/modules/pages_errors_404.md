@@ -22,4 +22,4 @@ The 404 page
 
 #### Defined in
 
-[src/pages/errors/404.tsx:8](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/pages/errors/404.tsx#L8)
+[src/pages/errors/404.tsx:8](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/pages/errors/404.tsx#L8)

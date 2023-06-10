@@ -32,4 +32,4 @@ A single dog card
 
 #### Defined in
 
-[src/components/DogCard.tsx:11](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/components/DogCard.tsx#L11)
+[src/components/DogCard.tsx:11](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/components/DogCard.tsx#L11)

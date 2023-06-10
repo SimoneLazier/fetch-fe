@@ -9,7 +9,7 @@
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "test": "vitest --root src",
     "coverage": "vitest run --coverage --root src",
-    "doc": "typedoc --plugin typedoc-plugin-markdown ./src/**/*.{tsx,ts}",
+    "doc": "typedoc --plugin typedoc-plugin-markdown --entryPointStrategy expand ./src --exclude '**/*.test.{ts,tsx}'",
     "preview": "vite preview"
   },
   "dependencies": {

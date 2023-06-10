@@ -32,4 +32,4 @@ The merged class list
 
 #### Defined in
 
-[src/utils/class-names.ts:9](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/utils/class-names.ts#L9)
+[src/utils/class-names.ts:9](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/utils/class-names.ts#L9)

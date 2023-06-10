@@ -28,4 +28,4 @@ The location filter selector with its popup
 
 #### Defined in
 
-[src/components/LocationSelector.tsx:43](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/components/LocationSelector.tsx#L43)
+[src/components/LocationSelector.tsx:43](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/components/LocationSelector.tsx#L43)

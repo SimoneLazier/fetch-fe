@@ -80,4 +80,4 @@ A map of state abbreviations and state name
 
 #### Defined in
 
-[src/utils/states.ts:4](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/utils/states.ts#L4)
+[src/utils/states.ts:4](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/utils/states.ts#L4)

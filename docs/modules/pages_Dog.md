@@ -22,4 +22,4 @@ The Dog page
 
 #### Defined in
 
-[src/pages/Dog.tsx:17](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/pages/Dog.tsx#L17)
+[src/pages/Dog.tsx:17](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/pages/Dog.tsx#L17)

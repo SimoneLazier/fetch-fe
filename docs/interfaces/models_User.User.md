@@ -20,7 +20,7 @@
 
 #### Defined in
 
-[src/models/User.d.ts:4](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/models/User.d.ts#L4)
+[src/models/User.d.ts:4](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/models/User.d.ts#L4)
 
 ___
 
@@ -30,7 +30,7 @@ ___
 
 #### Defined in
 
-[src/models/User.d.ts:3](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/models/User.d.ts#L3)
+[src/models/User.d.ts:3](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/models/User.d.ts#L3)
 
 ___
 
@@ -40,4 +40,4 @@ ___
 
 #### Defined in
 
-[src/models/User.d.ts:2](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/models/User.d.ts#L2)
+[src/models/User.d.ts:2](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/models/User.d.ts#L2)

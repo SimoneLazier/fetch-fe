@@ -31,4 +31,4 @@ The user, whether they're logged, and functions to perform login and logout
 
 #### Defined in
 
-[src/composables/useAuth.tsx:11](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/composables/useAuth.tsx#L11)
+[src/composables/useAuth.tsx:11](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/composables/useAuth.tsx#L11)

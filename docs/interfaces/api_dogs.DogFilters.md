@@ -23,7 +23,7 @@
 
 #### Defined in
 
-[src/api/dogs.ts:13](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/api/dogs.ts#L13)
+[src/api/dogs.ts:13](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/api/dogs.ts#L13)
 
 ___
 
@@ -33,7 +33,7 @@ ___
 
 #### Defined in
 
-[src/api/dogs.ts:18](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/api/dogs.ts#L18)
+[src/api/dogs.ts:18](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/api/dogs.ts#L18)
 
 ___
 
@@ -43,7 +43,7 @@ ___
 
 #### Defined in
 
-[src/api/dogs.ts:15](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/api/dogs.ts#L15)
+[src/api/dogs.ts:15](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/api/dogs.ts#L15)
 
 ___
 
@@ -53,7 +53,7 @@ ___
 
 #### Defined in
 
-[src/api/dogs.ts:14](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/api/dogs.ts#L14)
+[src/api/dogs.ts:14](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/api/dogs.ts#L14)
 
 ___
 
@@ -63,7 +63,7 @@ ___
 
 #### Defined in
 
-[src/api/dogs.ts:17](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/api/dogs.ts#L17)
+[src/api/dogs.ts:17](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/api/dogs.ts#L17)
 
 ___
 
@@ -73,4 +73,4 @@ ___
 
 #### Defined in
 
-[src/api/dogs.ts:16](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/api/dogs.ts#L16)
+[src/api/dogs.ts:16](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/api/dogs.ts#L16)

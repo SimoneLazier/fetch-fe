@@ -28,4 +28,4 @@ A general purpose pagination component
 
 #### Defined in
 
-[src/components/Pagination.tsx:19](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/components/Pagination.tsx#L19)
+[src/components/Pagination.tsx:19](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/components/Pagination.tsx#L19)

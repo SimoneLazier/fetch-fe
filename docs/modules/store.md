@@ -23,7 +23,7 @@ The redux store
 
 #### Defined in
 
-[src/store/index.tsx:8](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/store/index.tsx#L8)
+[src/store/index.tsx:8](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/store/index.tsx#L8)
 
 ## Functions
 
@@ -37,7 +37,7 @@ The redux store
 
 #### Defined in
 
-[src/store/index.tsx:12](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/store/index.tsx#L12)
+[src/store/index.tsx:12](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/store/index.tsx#L12)
 
 ___
 

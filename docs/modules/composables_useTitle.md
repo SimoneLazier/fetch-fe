@@ -28,4 +28,4 @@ A custom hook that changes the page title
 
 #### Defined in
 
-[src/composables/useTitle.tsx:10](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/composables/useTitle.tsx#L10)
+[src/composables/useTitle.tsx:10](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/composables/useTitle.tsx#L10)

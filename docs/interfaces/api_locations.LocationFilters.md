@@ -29,7 +29,7 @@
 
 #### Defined in
 
-[src/api/locations.ts:6](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/api/locations.ts#L6)
+[src/api/locations.ts:6](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/api/locations.ts#L6)
 
 ___
 
@@ -39,7 +39,7 @@ ___
 
 #### Defined in
 
-[src/api/locations.ts:5](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/api/locations.ts#L5)
+[src/api/locations.ts:5](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/api/locations.ts#L5)
 
 ___
 
@@ -49,4 +49,4 @@ ___
 
 #### Defined in
 
-[src/api/locations.ts:4](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/api/locations.ts#L4)
+[src/api/locations.ts:4](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/api/locations.ts#L4)

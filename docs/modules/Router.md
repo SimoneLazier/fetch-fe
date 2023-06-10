@@ -20,4 +20,4 @@
 
 #### Defined in
 
-[src/Router.tsx:16](https://github.com/SimoneLazier/fetch-fe/blob/9486deb/src/Router.tsx#L16)
+[src/Router.tsx:16](https://github.com/SimoneLazier/fetch-fe/blob/5933c5b/src/Router.tsx#L16)
