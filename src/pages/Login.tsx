@@ -8,10 +8,12 @@ import logo from '../assets/logo.svg'
 function Login() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
+  const [loading, setLoading] = useState(false)
   const auth = useAuth()
   const login = (e: FormEvent) => {
     e.preventDefault()
-    auth.login(name, email)
+    setLoading(true)
+    auth.login(name, email).finally(() => setLoading(false))
   }
 
   return (
@@ -68,7 +70,8 @@ function Login() {
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-800"
+                className="flex w-full justify-center rounded-md bg-indigo-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-800 disabled:opacity-50"
+                disabled={loading}
               >
                 Sign in
               </button>
