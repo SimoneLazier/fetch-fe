@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import GoogleMapReact from 'google-map-react'
 
 let map: google.maps.Map
@@ -42,7 +42,7 @@ interface MapProps {
  * @param props The center, the current selected area, and the event listener
  * @returns
  */
-function Map({ center, value, onSelect }: MapProps) {
+function Map({ center, value, onSelect: _onSelect }: MapProps) {
   const [rectangle, setRectangle] = useState<number[]>(
     value ? [value.top, value.left, value.bottom, value.right] : [],
   )
@@ -56,6 +56,7 @@ function Map({ center, value, onSelect }: MapProps) {
   const [click, setClick] = useState<number[]>(
     value ? [value.bottom, value.right] : [],
   )
+  const onSelect = useCallback(_onSelect, [_onSelect])
 
   useEffect(() => {
     if (
@@ -83,8 +84,7 @@ function Map({ center, value, onSelect }: MapProps) {
         right: Math.max(firstClick[1], lastClick[1]),
       })
     else onSelect(undefined)
-    // TODO: fix dependency
-  }, [firstClick, lastClick, hover])
+  }, [firstClick, lastClick, hover, onSelect])
 
   useEffect(() => {
     area?.setMap(null)

@@ -1,5 +1,5 @@
 import Select from './Select'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import Modal from './Modal'
 import Loader from './Loader'
@@ -68,6 +68,15 @@ function LocationSelector({ onChange }: LocationSelectorProps) {
   useEffect(() => {
     getLocation().then(setLocation)
   }, [])
+
+  const onLocationSelected = useCallback(
+    (bb: LocationFilters['boundingBox']) =>
+      setLocationFilters((prevFilters) => ({
+        ...prevFilters,
+        boundingBox: bb,
+      })),
+    [],
+  )
 
   const confirm = async () => {
     const filters = { ...locationFilters }
@@ -173,9 +182,7 @@ function LocationSelector({ onChange }: LocationSelectorProps) {
                 <Map
                   center={center}
                   value={locationFilters.boundingBox}
-                  onSelect={(bb) =>
-                    setLocationFilters({ ...locationFilters, boundingBox: bb })
-                  }
+                  onSelect={onLocationSelected}
                 />
               ) : (
                 <Loader />
