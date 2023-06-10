@@ -59,11 +59,13 @@ function Map({ center, value, onSelect: _onSelect }: MapProps) {
   const onSelect = useCallback(_onSelect, [_onSelect])
 
   useEffect(() => {
+    // No change, don't do anything to avoid re-renderings
     if (
       (firstClick?.at(0) === click[0] && firstClick?.at(1) === click[1]) ||
       (lastClick?.at(0) === click[0] && lastClick?.at(1) === click[1])
     )
       return
+    // Handle the click
     if (!firstClick) setFirstClick(click)
     else if (!lastClick) setLastClick(click)
     else {
@@ -74,8 +76,11 @@ function Map({ center, value, onSelect: _onSelect }: MapProps) {
 
   useEffect(() => {
     if (!firstClick) setRectangle([])
+    // If there is a click, draw the rectangle from where it's clicked
+    // to the second click or the mouse location (as a preview)
     else setRectangle([...firstClick, ...(lastClick ?? hover)])
 
+    // Clicked twice, an area is selected
     if (firstClick && lastClick)
       onSelect({
         top: Math.max(firstClick[0], lastClick[0]),
@@ -83,14 +88,20 @@ function Map({ center, value, onSelect: _onSelect }: MapProps) {
         bottom: Math.min(firstClick[0], lastClick[0]),
         right: Math.max(firstClick[1], lastClick[1]),
       })
+    // Otherwise, no area is selected
     else onSelect(undefined)
   }, [firstClick, lastClick, hover, onSelect])
 
   useEffect(() => {
+    // If we have a rectangle, let's draw it
     area?.setMap(null)
     if (maps && rectangle.length === 4) drawRectangle(rectangle)
   }, [rectangle])
 
+  /*
+   * Since Google Maps' APIs interfere with the state handling in React,
+   * we intercept the hover and click events and handle them with useEffect
+   */
   const apiLoaded = (
     newMap: google.maps.Map,
     newMaps: google.maps.MapsLibrary,

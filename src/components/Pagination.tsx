@@ -24,6 +24,7 @@ export default function Pagination({
 }: PaginationProps) {
   const pages = Math.ceil(total / perPage)
 
+  // Create the button containing the page number or "..."
   const PaginationItem = ({ value }: { value?: number }) => {
     return (
       <button

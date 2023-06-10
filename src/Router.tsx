@@ -16,13 +16,16 @@ function PrivateRoute({ children }: { children: JSX.Element }) {
 function Router() {
   const { isLogged, logout } = useAuth()
 
+  // Handle 401 error while app is in use
   axios.interceptors.response.use(undefined, (error) => {
     if (error instanceof AxiosError && error.response?.status === 401)
+      // Logout only the client to avoid an endless chain of 401 errors
       logout(true)
     // Return handled promise rejection
     return Promise.reject().catch(() => void 0)
   })
 
+  // Global unhandled promise rejection handler, redirect to generic error page
   const navigate = useNavigate()
   window.onunhandledrejection = () => navigate('/error')
 

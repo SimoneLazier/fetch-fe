@@ -26,6 +26,8 @@ function Dogs() {
     sortBy: 'breed',
     desc: false,
   })
+
+  // Remove/add a dog from the list of the selected ones
   const toggleSelected = (id: string) => {
     const i = selected.indexOf(id)
     setSelected(
@@ -36,6 +38,7 @@ function Dogs() {
   }
 
   useEffect(() => {
+    // If page or filters change, fetch again the list of dogs
     dogsApi
       .search(PER_PAGE, (page - 1) * PER_PAGE, filters)
       .then(({ dogs, total }) => {

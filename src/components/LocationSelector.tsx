@@ -49,6 +49,7 @@ function LocationSelector({ onChange }: LocationSelectorProps) {
     city: '',
     boundingBox: undefined,
   })
+  // The center of the map is either the current rectangle or the location
   const center = locationFilters.boundingBox
     ? {
         lat:
@@ -85,13 +86,18 @@ function LocationSelector({ onChange }: LocationSelectorProps) {
       .map((entry) => entry[0])
     const locations = await LocationsApi.search(filters)
 
+    // Too many zip codes, the APIs don't support more than 100
     if (locations && locations.total > 100) {
       setError(true)
-    } else if (locations && locations.total <= 100) {
+    }
+    // Less than 100, supported
+    else if (locations && locations.total <= 100) {
       setError(false)
       onChange(locations.results.map((r) => r.zip_code))
       setModalOpen(false)
-    } else {
+    }
+    // No locations in the bounding box, report no results found in the Dogs page
+    else {
       setError(false)
       onChange(null)
       setModalOpen(false)

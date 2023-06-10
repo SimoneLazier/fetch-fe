@@ -22,6 +22,7 @@ const useAuth = () => {
   }
 
   const logout = async (clientOnly = false) => {
+    // Allow client-side only logout in case the auth expires while using the app
     if (!clientOnly) await axios.post('/auth/logout')
     dispatch(setUser(undefined))
     navigate('/')
