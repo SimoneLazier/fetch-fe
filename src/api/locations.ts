@@ -33,7 +33,7 @@ class LocationsApi {
       results: DogLocation[]
       total: number
     }>('/locations/search', {
-      city: filters.city ? filters.city : undefined,
+      city: filters.city ? filters.city.trim() : undefined,
       states: filters.states.length ? filters.states : undefined,
       geoBoundingBox: filters.boundingBox
         ? {

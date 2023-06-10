@@ -172,7 +172,7 @@ function LocationSelector({ onChange }: LocationSelectorProps) {
               onChange={(e) =>
                 setLocationFilters({
                   ...locationFilters,
-                  city: e.target.value.trim(),
+                  city: e.target.value,
                 })
               }
             />
