@@ -57,7 +57,7 @@ function Dogs() {
   return (
     <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
       <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-        Chooose your favorite dogs!
+        Choose your favorite dogs!
       </h1>
 
       {dogs === undefined && <Loader />}
